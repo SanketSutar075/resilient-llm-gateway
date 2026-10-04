@@ -13,8 +13,10 @@ python demo.py            # real call; use a wrong OPENAI_API_KEY to see failove
 ## Done
 1-3 schemas, adapters, failover | 4 error classifier (429 retry+backoff, 402 instant switch, 400 fail) | 5 circuit breaker (closed/open/half-open)
 
-## Offline demo
-`python chaos_demo.py`
+7 state handoff (history stored outside the model; Redis or in-memory; tool results carried across providers)
+
+## Offline demos
+`python chaos_demo.py` (retry/failover/breaker)  |  `python handoff_demo.py` (mid-task provider switch)
 
 ## Next steps
-6. Gemini + Ollama adapters 7. Redis state handoff 8. MCP servers
+6. Gemini + Ollama adapters 8. MCP servers 9. Agent loop

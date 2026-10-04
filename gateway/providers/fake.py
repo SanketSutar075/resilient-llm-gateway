@@ -15,9 +15,11 @@ class FakeProvider(BaseProvider):
         self.fail_times = fail_times
         self.reply = reply
         self.calls = 0
+        self.last_request: ChatRequest | None = None
 
     def _call(self, req: ChatRequest):
         self.calls += 1
+        self.last_request = req
         failing = self.fail_status != -1 and (self.fail_times is None or self.calls <= self.fail_times)
         if failing:
             raise ProviderError(self.name, self.fail_status, "simulated failure")
