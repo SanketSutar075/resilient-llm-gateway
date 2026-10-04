@@ -15,8 +15,10 @@ python demo.py            # real call; use a wrong OPENAI_API_KEY to see failove
 
 7 state handoff (history stored outside the model; Redis or in-memory; tool results carried across providers)
 
+8 agent loop + MCP: 2 real MCP servers (calc, docs), provider-neutral JSON tool calling, approval gate for risky tools, injection-safe labelling, step/size limits
+
 ## Offline demos
-`python chaos_demo.py` (retry/failover/breaker)  |  `python handoff_demo.py` (mid-task provider switch)
+`python chaos_demo.py` (retry/failover/breaker)  |  `python handoff_demo.py` (mid-task provider switch)  |  `python agent_demo.py [--mcp]` (agent finishes after provider dies)
 
 ## Next steps
-6. Gemini + Ollama adapters 8. MCP servers 9. Agent loop
+6. Gemini + Ollama adapters 9. Dashboard + tracing 10. Eval set + chaos metrics 11. Real RAG (embeddings) in docs server
